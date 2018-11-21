@@ -11,7 +11,7 @@
                     <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p style="overflow: hidden;text-overflow: ellipsis;max-width: 160px;" data-toggle="tooltip" title="{{ Auth::user()->name }}">{{ Auth::user()->name }}</p>
+                    <p style="overflow: hidden;text-overflow: ellipsis;max-width: 160px;" data-toggle="tooltip" title="{{ Auth::user()->nombre }}">{{ Auth::user()->nombre }}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}</a>
                 </div>
@@ -33,13 +33,12 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
+            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Inicio</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Estacionamiento</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                    <li><a href="{{route('estacionamiento.index')}}">Estacionamiento</a></li>
+                    <li><a href="{{route('espacio-estacionamiento.index')}}">Espacio Estacionamiento</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

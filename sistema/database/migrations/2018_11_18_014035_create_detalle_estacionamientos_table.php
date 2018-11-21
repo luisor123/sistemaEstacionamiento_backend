@@ -16,7 +16,7 @@ class CreateDetalleEstacionamientosTable extends Migration
         Schema::create('detalle_estacionamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nota')->nullable();
-            $table->boolean('salida');
+            $table->boolean('salio');
 
             $table->dateTime('fecha_entrada');
             $table->dateTime('fecha_salida')->nullable();
