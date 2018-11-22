@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('propietario', 'PropietarioController');
+    Route::resource('vehiculo', 'VehiculoController');
     
     Route::resource('estacionamiento', 'EstacionamientoController');
     Route::resource('espacio-estacionamiento', 'EspacioEstacionamientoController');
+    Route::resource('detalle-estacionamiento', 'DetalleEstacionamientoController');
     
 });

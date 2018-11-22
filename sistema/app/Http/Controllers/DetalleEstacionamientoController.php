@@ -12,9 +12,20 @@ class DetalleEstacionamientoController extends Controller
     /**
      * 
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $model=DB::table('detalle_estacionamientos as detalle')
+                ->join('vehiculos as ve','ve.id','detalle.vehiculo_id')
+                ->join('propietarios as pro','pro.id','ve.propietario_id')
+                ->select('detalle.id','detalle.fecha_entrada','detalle.fecha_salida'
+                ,'ve.placa','pro.nombre','pro.apellido')
+                ->paginate(7);
+
+        $data=[
+            'model'=>$model
+        ];
+
+        return view('detalle-estacionamiento.index',$data);
     }
 
     /**
@@ -23,6 +34,7 @@ class DetalleEstacionamientoController extends Controller
     public function create()
     {
         //
+        return view('detalle-estacionamiento.create');
     }
 
     /**

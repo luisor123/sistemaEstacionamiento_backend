@@ -48,7 +48,7 @@ class PropietarioController extends Controller
         try{
             //DB::beginTransaction();
 
-            $buscar_dni=Propietario::where('dni',$request->dni);
+            $buscar_dni=Propietario::where('dni',$request->dni)->first();
 
             if($buscar_dni==null){
                 $model=new Propietario();
@@ -103,14 +103,28 @@ class PropietarioController extends Controller
      *
      */
     public function update(Request $request, $id)
-    {
-        //
-        $model=Propietario::find($id);
-        $model->dni = $request->dni;
-        $model->nombre = $request->nombre;
-        $model->apellido = $request->apellido;
-        $model->descripcion = $request->descripcion;
-        $model->save();
+    {       
+
+        try{
+            //DB::beginTransaction();
+
+            $model=Propietario::find($id);
+            $model->dni = $request->dni;
+            $model->nombre = $request->nombre;
+            $model->apellido = $request->apellido;
+            $model->descripcion = $request->descripcion;
+            $model->save();
+
+            //DB::commit();
+            $notificacion = array(
+                'message' => 'Gracias! El propietario ha sido modificado con exito.', 
+                'alert-type' => 'success'
+            );
+             return redirect()->back()->with($notificacion);
+        }catch(Exception $e){
+            //DB::rollback();
+            dd($e);
+        }       
     }
 
     /**
@@ -118,7 +132,31 @@ class PropietarioController extends Controller
      */
     public function destroy($id)
     {
-        $model=Propietario::find($id);
-        $model->delete();
+        
+        try{
+            //DB::beginTransaction();
+            
+            $model=Propietario::find($id);
+            $model->delete();
+
+            //DB::commit();
+            $notificacion = array(
+                'message' => 'Gracias! El propietario ha sido eliminado con exito.', 
+                'alert-type' => 'success'
+            );
+             return redirect()->back()->with($notificacion);
+        }catch(Exception $e){
+            //DB::rollback();
+            dd($e);
+        }       
+    }
+
+
+    //* TODAS LAS APIS */
+    function buscar_por_dni($dni){
+        $model = Propietario::select('id','dni','nombre','apellido')
+                    ->where('dni',$dni)
+                    ->first();
+        return $model;
     }
 }

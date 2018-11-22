@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vehiculo extends Model
+class Propietario extends Model
 {
-    protected $table="vehiculos";
+    //
+    protected $table="propietarios";
 
     protected $fillable = [
-        'placa', 'descripcion', 'propietario_id'
+        'dni', 'nombre', 'apellido','descripcion'
     ];
 
     public $timestamps = false;

@@ -35,12 +35,33 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Inicio</span></a></li>
             <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Propietario</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('propietario.index')}}">Propietario</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Vehiculo</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('vehiculo.index')}}">Vehiculo</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Movimientos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('detalle-estacionamiento.index')}}">Entradas y salidas</a></li>
+                </ul>
+            </li>
+            {{--
+            <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Estacionamiento</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('estacionamiento.index')}}">Estacionamiento</a></li>
                     <li><a href="{{route('espacio-estacionamiento.index')}}">Espacio Estacionamiento</a></li>
                 </ul>
             </li>
+            --}}
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

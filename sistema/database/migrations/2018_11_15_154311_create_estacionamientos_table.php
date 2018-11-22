@@ -18,6 +18,7 @@ class CreateEstacionamientosTable extends Migration
             $table->string('codigo')->unique();
             $table->string('nombre');
             $table->string('descripcion');
+            $table->integer('cantidad');
         });
     }
 
